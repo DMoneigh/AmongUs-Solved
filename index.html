@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101211">
+  <title>Orbit — Mission Control</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <svg class="icon-library" xmlns="http://www.w3.org/2000/svg"><defs>
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol>
+    <symbol id="i-map" viewBox="0 0 24 24"><path d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3Z M9 3v15 M15 6v15"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3 M16 5a3 3 0 0 1 0 6 M18 15a5 5 0 0 1 3 5"/></symbol>
+    <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M5 3v7m0 4v7M12 3v12m0 4v2M19 3v2m0 4v12 M2 10h6 M9 16h6 M16 7h6"/></symbol>
+    <symbol id="i-activity" viewBox="0 0 24 24"><path d="M2 12h5l3-8 4 16 3-8h5"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24"><path d="m10 3-1 3-3 1-3 3 2 3v4l4 1 2 3 4-2 3-1v-4l3-3-2-4-4-1-2-3Z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2"/><path d="M12 2v4m0 12v4M2 12h4m12 0h4"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path d="m13 2-9 12h7l-1 8 10-13h-7Z"/></symbol>
+    <symbol id="i-ghost" viewBox="0 0 24 24"><path d="M5 21V9a7 7 0 0 1 14 0v12l-3-2-4 2-4-2Z"/><path d="M9 10v2m6-2v2"/></symbol>
+    <symbol id="i-kick" viewBox="0 0 24 24"><path d="M14 4H5v16h9 M10 12h12m-4-4 4 4-4 4"/></symbol>
+    <symbol id="i-expand" viewBox="0 0 24 24"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10v1"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 8a8 8 0 1 0 0 9M20 3v6h-6"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+    <symbol id="crew" viewBox="0 0 32 38"><path d="M7 15H4v15h5" fill="currentColor" stroke="#111815" stroke-width="2.4"/><path d="M9 32v3h6v-6h5v6h6V13C26 5 21 3 16 3S7 6 7 14v15q0 3 2 3Z" fill="currentColor" stroke="#111815" stroke-width="2.4" stroke-linejoin="round"/><path d="M15 9h12v10H15q-5 0-5-5t5-5" fill="#bce2e9" stroke="#172829" stroke-width="2.3"/><path d="M16 11h8" stroke="#f0ffff" stroke-width="2" stroke-linecap="round"/></symbol>
+  </defs></svg>
+  <aside class="sidebar">
+    <a class="brand" href="#" aria-label="Orbit home"><span class="brand-mark">◉</span> orbit<span class="brand-dot">.</span><span class="edition">MOD CONSOLE</span></a>
+    <div class="workspace"><span class="workspace-icon"><svg><use href="#crew"/></svg></span><div>Among Us<span>Local sandbox</span></div><span class="workspace-chevron">⌄</span></div>
+    <div class="nav-caption">WORKSPACE</div>
+    <nav aria-label="Main navigation">
+      <button class="nav-item active" data-page="overview"><svg><use href="#i-grid"/></svg>Overview<span class="active-dot"></span></button>
+      <button class="nav-item" data-page="map"><svg><use href="#i-map"/></svg>Live map<span class="nav-tag">LIVE</span></button>
+      <button class="nav-item" data-page="players"><svg><use href="#i-users"/></svg>Players<span class="nav-count">8</span></button>
+      <button class="nav-item" data-page="mods"><svg><use href="#i-sliders"/></svg>Mod controls</button>
+      <button class="nav-item" data-page="activity"><svg><use href="#i-activity"/></svg>Activity log</button>
+    </nav>
+    <div class="sidebar-bottom"><div class="sandbox-card"><span class="tiny-dot"></span> YOUR PRIVATE PLAYGROUND<p>More control.<br>A different perspective.</p><span class="sandbox-pill">SANDBOX MODE <svg><use href="#i-info"/></svg></span></div>
+      <button class="nav-item" data-page="settings"><svg><use href="#i-settings"/></svg>Settings</button>
+      <div class="profile"><div class="avatar">D</div><div>Dez<span>Session host</span></div><span class="host-badge">HOST</span></div>
+    </div>
+  </aside>
+  <div class="app">
+    <header class="topbar"><div class="breadcrumb">Workspace <span>/</span> <strong id="breadcrumb-title">Overview</strong></div><div class="header-right"><span class="connection"><i></i> Local simulation</span><span class="top-divider"></span><span class="key-hint">⌘ K</span><button class="icon-button" id="help-button" aria-label="About this console"><svg><use href="#i-info"/></svg></button><div class="mini-avatar">D</div></div></header>
+    <main>
+      <section class="page-heading"><div><div class="eyebrow">THE SKELD <span>/</span> SESSION 001</div><h1 id="page-title">Eyes everywhere<span>.</span></h1><p id="page-description">Your crew. Your rules. The whole ship at a glance.</p></div><button id="session-button" class="session-button"><svg><use href="#i-refresh"/></svg>Reset session</button></section>
+      <div class="sandbox-notice"><svg><use href="#i-info"/></svg><span><strong>A safe space to experiment.</strong> This is a standalone simulation. No live game connection or game files are modified.</span><span class="local-label">LOCAL ONLY</span></div>
+      <section class="stats" aria-label="Session statistics">
+        <div class="stat"><div class="stat-icon"><svg><use href="#i-users"/></svg></div><div><span>Players in session</span><strong><b id="player-count">8</b><small>/ 10</small></strong></div><span class="stat-foot"><i></i> In progress</span></div>
+        <div class="stat"><div class="stat-icon danger"><svg><use href="#i-target"/></svg></div><div><span>Impostors detected</span><strong id="impostor-count">2</strong></div><span class="stat-foot red">Hiding in plain sight</span></div>
+        <div class="stat"><div class="stat-icon"><svg><use href="#i-sliders"/></svg></div><div><span>Active mods</span><strong><b id="mod-count">2</b><small>/ 4</small></strong></div><span class="stat-foot">You're in control</span></div>
+        <div class="stat"><div class="stat-icon"><svg><use href="#i-activity"/></svg></div><div><span>Session time</span><strong id="session-time">00:00</strong></div><span class="stat-foot mono">LOCAL SESSION · OFFLINE</span></div>
+      </section>
+      <div class="main-grid">
+        <section class="panel map-panel" id="map-panel"><div class="panel-heading"><div><h2><span class="tiny-dot"></span> Live overview <span class="badge">THE SKELD</span></h2><p>Every movement. Nothing missed.</p></div><button class="icon-button" id="expand-map" aria-label="Expand map"><svg><use href="#i-expand"/></svg></button></div>
+          <div class="map-stage" id="map-stage">
+            <div class="map-corner-label"><span class="signal-bars">▂▄▆</span> POSITION TRACKING <span id="tracking-state">ACTIVE</span></div>
+            <svg id="ship-map" viewBox="0 0 1000 600" role="img" aria-label="Interactive spaceship map. Select a player to inspect them. Use arrow keys or WASD to move Dez."><defs><pattern id="grid" width="25" height="25" patternUnits="userSpaceOnUse"><path d="M25 0H0V25" fill="none" stroke="#8d9b8e" stroke-opacity=".055"/></pattern><pattern id="floor" width="12" height="12" patternUnits="userSpaceOnUse"><path d="M12 0H0V12" fill="none" stroke="#9cabb3" stroke-opacity=".06"/></pattern><filter id="player-glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="6"/></filter></defs><rect width="1000" height="600" fill="url(#grid)"/><g id="map-world"><g id="ship-corridors"></g><g id="ship-rooms"></g><g id="ship-furniture"></g><g id="ship-labels"></g><g id="player-markers"></g></g></svg>
+            <div class="map-legend"><span><i class="legend-dot self"></i>You</span><span><i class="legend-dot crew"></i>Crewmate</span><span><i class="legend-dot imp"></i>Impostor</span></div>
+            <div class="map-tools"><button id="zoom-in" aria-label="Zoom in">+</button><span id="zoom-label">100%</span><button id="zoom-out" aria-label="Zoom out">−</button><button id="center-map" aria-label="Reset map view"><svg><use href="#i-target"/></svg></button></div>
+          </div><div class="map-footer"><span><span class="live-dot"></span> <span id="map-status">All players visible</span><span class="footer-divider">|</span><span id="update-time">Updated just now</span></span><span><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> to move <span class="footer-divider">·</span> Click a player to inspect</span></div>
+        </section>
+        <section class="panel players-panel" id="players-panel"><div class="panel-heading"><div><h2>Players <span class="number-badge" id="roster-count">8</span></h2><p>A familiar face isn't always a friend.</p></div><button id="sort-players" class="icon-button" aria-label="Sort players by name" title="Sort players by name">↕</button></div><div class="roster-filters" role="group" aria-label="Filter players"><button class="selected" data-filter="all">All players</button><button data-filter="impostor">Impostors <span id="filter-impostor-count">2</span></button></div><div id="player-list" class="player-list"></div><div class="roster-bottom"><span class="tiny-dot"></span> <span id="roster-summary">6 crewmates · 2 impostors</span><span>8 / 10</span></div></section>
+      </div>
+      <section id="mods-section" class="mods-section"><div class="section-heading"><div><h2>Change the rules<span class="badge">MOD CONTROLS</span></h2><p>A little unfair advantage. A lot of possibilities.</p></div><span class="auto-save"><span class="tiny-dot"></span> Changes apply instantly</span></div><div class="mod-grid">
+        <article class="mod-card" data-mod-card="tracking"><div class="mod-top"><span class="mod-icon"><svg><use href="#i-eye"/></svg></span><button class="toggle on" role="switch" aria-checked="true" aria-label="Player ESP" data-mod="tracking"></button></div><h3>Player ESP <span class="mod-tag">VISION</span></h3><p>See every player's location.<br>No more guessing games.</p><div class="mod-status"><i></i><span>All players revealed</span></div></article>
+        <article class="mod-card" data-mod-card="reveal"><div class="mod-top"><span class="mod-icon red"><svg><use href="#i-target"/></svg></span><button class="toggle on" role="switch" aria-checked="true" aria-label="Reveal impostors" data-mod="reveal"></button></div><h3>Reveal impostors <span class="mod-tag">INTEL</span></h3><p>Know who's behind the visor.<br>Keep your enemies closer.</p><div class="mod-status"><i></i><span>2 impostors identified</span></div></article>
+        <article class="mod-card" data-mod-card="noclip"><div class="mod-top"><span class="mod-icon"><svg><use href="#i-ghost"/></svg></span><button class="toggle" role="switch" aria-checked="false" aria-label="Noclip" data-mod="noclip"></button></div><h3>Noclip <span class="mod-tag">MOVEMENT</span></h3><p>Walls are just a suggestion.<br>Move freely through the ship.</p><div class="mod-status off"><i></i><span>Normal collision enabled</span></div></article>
+        <article class="mod-card" data-mod-card="instantKick"><div class="mod-top"><span class="mod-icon"><svg><use href="#i-kick"/></svg></span><button class="toggle" role="switch" aria-checked="false" aria-label="Instant kick" data-mod="instantKick"></button></div><h3>Instant kick <span class="mod-tag">HOST</span></h3><p>Skip the discussion. Skip the vote.<br>You make the final call.</p><div class="mod-status off"><i></i><span>Standard voting enabled</span></div></article>
+      </div></section>
+      <section class="panel activity-panel" id="activity-panel"><div class="activity-header"><h2><svg><use href="#i-activity"/></svg> Session activity <span class="badge">LIVE FEED</span></h2><button class="text-button" id="clear-log">Clear log</button></div><div id="activity-log"></div></section>
+      <footer class="page-footer"><span><span class="footer-logo">◉</span> orbit <span class="footer-divider">/</span> A different perspective.</span><span>Built for curiosity. Designed for your own sandbox. <span class="footer-divider">·</span> v1.0.0</span></footer>
+    </main>
+  </div>
+  <dialog id="player-dialog"><div class="dialog-header"><span class="eyebrow">PLAYER INTELLIGENCE</span><button class="icon-button close-dialog" aria-label="Close player details">×</button></div><div id="player-details"></div></dialog>
+  <dialog id="info-dialog"><div class="dialog-header"><span class="eyebrow" id="info-title">ABOUT THIS SANDBOX</span><button class="icon-button close-dialog" aria-label="Close dialog">×</button></div><div id="info-content"></div></dialog>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
