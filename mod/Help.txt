@@ -1,0 +1,111 @@
+AMONG US PRIVATE LAB - ACTUAL WINDOWS IL2CPP PLUGIN
+
+This is not the browser mockup. index.html, styles.css and app.js are untouched.
+The DLL runs in Unity through BepInEx's supported IL2CPP BasePlugin/AddComponent
+mechanism and Doorstop loader. It does not inject into or attach to a process.
+
+QUICK START (from repository root, Windows PowerShell or PowerShell 7)
+  .\mod\Build.ps1
+  .\mod\Test.ps1
+  .\mod\Install.ps1 -GameDirectory 'C:\Games\Among Us' -CheckOnly
+  .\mod\Install.ps1 -GameDirectory 'C:\Games\Among Us'
+  .\mod\Launch.ps1 -GameDirectory 'C:\Games\Among Us'
+
+Use your real legally owned game's directory, not the example path. Installation
+is explicit; no game files are changed by building/testing. Scripts also support
+-WhatIf on install/launch/uninstall. Inspect scripts before running them. If local
+policy blocks scripts, use a trusted PowerShell invocation with a process-scoped
+ExecutionPolicy; organizational policy may still prohibit this.
+
+Build requires a Windows x64 .NET SDK 8+ and Internet for pinned loader/Unity
+libraries and .NET targeting packs on first use. SDKs 9/10 also work. No globally
+installed .NET 6 runtime is needed: the loader ships its own runtime. Build defaults
+to uploads\514f1991-4890-4f15-90cf-307a9bf9831d.zip; alternatively:
+  .\mod\Build.ps1 -GameDirectory 'C:\Games\Among Us'
+  .\mod\Build.ps1 -GameArchive 'C:\path\to\your-copy.zip'
+
+Output: mod\artifacts\AmongUs.PrivateLab.dll and its build.json hash manifest.
+Do NOT redistribute game binaries, dummy DLLs, or interop DLLs from .mod-cache.
+Only the original plugin source/artifact is intended for distribution. This
+repository does not vendor the game or third-party loader binaries.
+
+IN GAME
+  F6              Show/hide the actual in-game Unity IMGUI menu.
+  Freeplay        Available automatically after the local player spawns.
+  Private hosted  Check the consent box, then arm the current test session.
+  Player list     World x/y, actual role/team, alive/dead status; impostors red.
+  World labels    Optional camera-projected names/roles/coordinates.
+  Eliminate       Nearest living target within 2.5 world units; active round only.
+                  Local MurderPlayer in Freeplay; host RpcMurderPlayer otherwise.
+                  Alive/movable local player required; no meetings, ladders,
+                  platforms or vented targets. Rate-limited to one per .75 seconds.
+  Noclip          Disables only the local player's body collider; original state
+                  restored on disable, meeting, death, transition or loss of gate.
+                  Return inside the walkable map BEFORE disabling to avoid trapping.
+  Kick now        Host KickPlayer(clientId, false), not vote-to-kick, not a ban.
+                  Not applicable to Freeplay bots. Cannot kick self/host. The
+                  server still decides whether/when a host kick is accepted.
+  Disarm          Clears session consent and optional toggles (private mode).
+
+Hiding F6 does not disable enabled noclip/world labels. The IMGUI menu does not
+pause gameplay or capture all underlying game controls. Coordinate labels are
+not a map, reveal no off-client data, and roles can be unknown before assignment.
+Actions can end a round normally. This plugin does not patch victory conditions,
+forge network authority, bypass anti-cheat, change account/platform checks, or
+modify public games. All info/actions are gated; public/non-host sessions display
+only a locked message. Private-to-public, host loss, disconnect or lobby identity
+change clears arming; re-arm explicitly after returning to a private lobby.
+Consent is a local explicit acknowledgement, not a remote consent protocol.
+Use only an isolated test lobby with participants who have actually agreed.
+
+COMPATIBILITY / VERIFIED SCOPE
+  Game build GUID: 3b4ee0911f414b62b99cd35be77e688b
+  Native machine: Windows x64; metadata version 31; Unity 2022.3.44f1
+  Pinned loader: BepInEx Unity IL2CPP 6.0.0-be.735+5fef357
+  Interop generator/runtime from loader: 1.4.6
+  Exact GameAssembly.dll and metadata SHA-256 hashes: dependencies.json
+
+The offline build uses the pinned loader's own Cpp2IL processing pipeline on the
+supplied GameAssembly.dll/global-metadata.dat, then its Il2CppInterop generator
+with matching Unity base libraries. Compilation validates actual game API types
+and signatures, including PlayerControl.RpcMurderPlayer(PlayerControl, bool),
+MurderPlayer(PlayerControl, MurderResultFlags), GetTruePosition(), Collider,
+NetworkedPlayerInfo.Role/RoleType/ClientId, and
+InnerNet.InnerNetClient.KickPlayer(int, bool), AmHost and IsGamePublic.
+No arbitrary memory offsets are used.
+
+Offline metadata processing, interop generation, plugin compilation, pure policy
+tests and install/launch-preflight/uninstall fixture checks can be verified
+without launching the game. Live Unity lifecycle, F6 rendering, native IL2CPP
+calls, multiplayer RPC behavior and platform launch have NOT been runtime-tested
+here. Compatibility is NOT guaranteed. Installation rejects different hashes;
+the plugin additionally refuses different runtime build GUIDs. After game updates,
+do not edit out these guards: regenerate/review against the new APIs and retest.
+
+FIRST LAUNCH / TROUBLESHOOTING
+Allow several minutes for BepInEx to generate BepInEx\interop on first boot;
+Internet may be required for Unity libraries. Check BepInEx\LogOutput.log for
+"Private Lab loaded". If there is no log, check loader/platform startup first.
+For metadata/generator errors, stop and retain the log; do not substitute offsets.
+Runtime menu errors fail closed, restore the body collider when possible, and log
+the error. Restart before retesting. Do not use alongside other mods/anti-cheat.
+Install refuses any existing BepInEx/dotnet/Doorstop component; use a clean copy.
+If the platform requires Steam/Epic authentication, start through that platform
+normally after installation instead of Launch.ps1. Account requirements remain.
+
+DISABLE / REMOVE
+  .\mod\Launch.ps1 -GameDirectory 'C:\Games\Among Us' -Unmodded
+  .\mod\Uninstall.ps1 -GameDirectory 'C:\Games\Among Us'
+Unmodded disables Doorstop only for that child. Uninstall removes only unchanged
+files from its install manifest; modified files and generated configs/logs/interop
+are preserved. Review warnings: a modified winhttp.dll may keep a loader active.
+Close this game before installation or removal. Never remove other mods manually
+just to satisfy this installer's clean-copy precondition.
+
+UPSTREAM REFERENCES (public tools downloaded directly, hash pinned)
+  https://github.com/BepInEx/BepInEx
+  https://builds.bepinex.dev/projects/bepinex_be
+  https://github.com/BepInEx/Il2CppInterop
+  https://github.com/SamboyCoding/Cpp2IL
+  https://unity.bepinex.dev/
+  https://github.com/BepInEx/BepInEx/blob/5fef357/Runtimes/Unity/BepInEx.Unity.IL2CPP/Il2CppInteropManager.cs

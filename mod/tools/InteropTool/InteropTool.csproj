@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <RollForward>Major</RollForward>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LoaderRoot Condition="'$(LoaderRoot)' == ''">$(MSBuildThisFileDirectory)..\..\..\.mod-cache\loader</LoaderRoot>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Il2CppInterop.Generator"><HintPath>$(LoaderRoot)\BepInEx\core\Il2CppInterop.Generator.dll</HintPath></Reference>
+    <Reference Include="Il2CppInterop.Common"><HintPath>$(LoaderRoot)\BepInEx\core\Il2CppInterop.Common.dll</HintPath></Reference>
+    <Reference Include="Mono.Cecil"><HintPath>$(LoaderRoot)\BepInEx\core\Mono.Cecil.dll</HintPath></Reference>
+    <Reference Include="Cpp2IL.Core"><HintPath>$(LoaderRoot)\BepInEx\core\Cpp2IL.Core.dll</HintPath></Reference>
+    <Reference Include="LibCpp2IL"><HintPath>$(LoaderRoot)\BepInEx\core\LibCpp2IL.dll</HintPath></Reference>
+    <Reference Include="AssetRipper.Primitives"><HintPath>$(LoaderRoot)\BepInEx\core\AssetRipper.Primitives.dll</HintPath></Reference>
+    <Reference Include="AsmResolver.DotNet"><HintPath>$(LoaderRoot)\BepInEx\core\AsmResolver.DotNet.dll</HintPath></Reference>
+    <Reference Include="AsmResolver"><HintPath>$(LoaderRoot)\BepInEx\core\AsmResolver.dll</HintPath></Reference>
+    <Reference Include="AsmResolver.PE"><HintPath>$(LoaderRoot)\BepInEx\core\AsmResolver.PE.dll</HintPath></Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions"><HintPath>$(LoaderRoot)\dotnet\Microsoft.Extensions.Logging.Abstractions.dll</HintPath></Reference>
+    <Content Include="$(LoaderRoot)\BepInEx\core\*.dll" CopyToOutputDirectory="PreserveNewest" Link="%(Filename)%(Extension)" />
+  </ItemGroup>
+</Project>

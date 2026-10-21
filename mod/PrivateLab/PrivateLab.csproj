@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>AmongUs.PrivateLab</AssemblyName>
+    <Version>1.0.0</Version>
+    <LoaderRoot>$(MSBuildThisFileDirectory)..\..\.mod-cache\loader</LoaderRoot>
+    <InteropRoot>$(MSBuildThisFileDirectory)..\..\.mod-cache\interop</InteropRoot>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BepInEx.Core"><HintPath>$(LoaderRoot)\BepInEx\core\BepInEx.Core.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="BepInEx.Unity.IL2CPP"><HintPath>$(LoaderRoot)\BepInEx\core\BepInEx.Unity.IL2CPP.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Il2CppInterop.Runtime"><HintPath>$(LoaderRoot)\BepInEx\core\Il2CppInterop.Runtime.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="$(InteropRoot)\*.dll"><Private>false</Private></Reference>
+  </ItemGroup>
+</Project>

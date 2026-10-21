@@ -1,0 +1,15 @@
+{
+  "buildGuid": "3b4ee0911f414b62b99cd35be77e688b",
+  "unityVersion": "2022.3.44f1",
+  "gameAssemblySha256": "615A95C9E09B6FFD45570883CB8459311C2B457533A38B37ED1704D6205AEDF9",
+  "metadataSha256": "B840D45186788E683E42B6687D66F4147281903458AE1D842F7C01FD78543CB6",
+  "loader": {
+    "version": "6.0.0-be.735+5fef357",
+    "url": "https://builds.bepinex.dev/projects/bepinex_be/735/BepInEx-Unity.IL2CPP-win-x64-6.0.0-be.735%2B5fef357.zip",
+    "sha256": "BADEF8112853A00939A0DF6CA143BC0A4E3DC02BD4D21B873302731BFA0E4DF4"
+  },
+  "unity": {
+    "url": "https://unity.bepinex.dev/libraries/2022.3.44.zip",
+    "sha256": "E9E6C943619867F0AAFB6888BD57EC49E46F833B92EC0E43223346370D69E0BD"
+  }
+}

@@ -1,3 +1,7 @@
 node_modules/
 .env
 *.log
+.mod-cache/
+mod/**/bin/
+mod/**/obj/
+mod/artifacts/
