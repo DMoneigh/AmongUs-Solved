@@ -1,4 +1,5 @@
 node_modules/
+uploads/
 .env
 *.log
 .mod-cache/
